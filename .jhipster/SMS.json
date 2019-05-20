@@ -1,0 +1,31 @@
+{
+    "name": "SMS",
+    "fields": [
+        {
+            "fieldName": "smsAuthText",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "language",
+            "fieldType": "Language",
+            "fieldValues": "FRENCH,ENGLISH,SPANISH,ITALIAN,GERMAN,PORTUGUESE,DUTCH,ROMANIAN,POLISH"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipName": "profile",
+            "otherEntityName": "profile",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20190520120629",
+    "entityTableName": "sms",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

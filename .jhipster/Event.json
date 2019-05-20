@@ -1,0 +1,58 @@
+{
+    "name": "Event",
+    "fields": [
+        {
+            "fieldName": "parentId",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "masterEvent",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "type",
+            "fieldType": "EventType",
+            "fieldValues": "SYNCHRONIZATION,ADD_ACCOUNT,UPDATE_ACCOUNT,DELETE_ACCOUNT,TASK_END,CREATE_CONNECTOR,ERROR"
+        },
+        {
+            "fieldName": "from",
+            "fieldType": "ConnectorType",
+            "fieldValues": "PPM,CRM,BILLING,TICKETING,MRR_REPORT,UNIVERSIGN"
+        },
+        {
+            "fieldName": "to",
+            "fieldType": "ConnectorType",
+            "fieldValues": "PPM,CRM,BILLING,TICKETING,MRR_REPORT,UNIVERSIGN"
+        },
+        {
+            "fieldName": "exception",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "message",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "creationDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "childSize",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "parameter",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20190520120628",
+    "entityTableName": "event",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

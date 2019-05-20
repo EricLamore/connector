@@ -1,0 +1,22 @@
+{
+  "connectorApp": {
+    "endEmail": {
+      "home": {
+        "title": "EndEmails",
+        "createLabel": "Créer un nouveau End Email",
+        "createOrEditLabel": "Créer ou éditer un End Email"
+      },
+      "created": "Un nouveau End Email a été créé avec l'identifiant {{ param }}",
+      "updated": "Le End Email avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le End Email avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le End Email {{ id }} ?"
+      },
+      "detail": {
+        "title": "End Email"
+      },
+      "endSubject": "End Subject",
+      "endBody": "End Body"
+    }
+  }
+}

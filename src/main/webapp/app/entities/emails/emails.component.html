@@ -1,0 +1,79 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="connectorApp.emails.home.title">Emails</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-emails" [routerLink]="['/emails/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="connectorApp.emails.home.createLabel">
+            Create new Emails
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="emails">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="connectorApp.emails.logo">Logo</span></th>
+            <th><span jhiTranslate="connectorApp.emails.language">Language</span></th>
+            <th><span jhiTranslate="connectorApp.emails.startEmail">Start Email</span></th>
+            <th><span jhiTranslate="connectorApp.emails.endEmail">End Email</span></th>
+            <th><span jhiTranslate="connectorApp.emails.relaunchEmail">Relaunch Email</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let emails of emails ;trackBy: trackId">
+                <td><a [routerLink]="['/emails', emails.id, 'view' ]">{{emails.id}}</a></td>
+                <td>
+                    <a *ngIf="emails.logo" (click)="openFile(emails.logoContentType, emails.logo)">
+                        <img [src]="'data:' + emails.logoContentType + ';base64,' + emails.logo" style="max-height: 30px;" alt="emails image"/>
+                    </a>
+                    <span *ngIf="emails.logo">{{emails.logoContentType}}, {{byteSize(emails.logo)}}</span>
+                </td>
+                <td jhiTranslate="{{'connectorApp.Language.' + emails.language}}">{{emails.language}}</td>
+                <td>
+                    <div *ngIf="emails.startEmail">
+                        <a [routerLink]="['../start-email', emails.startEmail?.id, 'view' ]" >{{emails.startEmail?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="emails.endEmail">
+                        <a [routerLink]="['../end-email', emails.endEmail?.id, 'view' ]" >{{emails.endEmail?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="emails.relaunchEmail">
+                        <a [routerLink]="['../relaunch-email', emails.relaunchEmail?.id, 'view' ]" >{{emails.relaunchEmail?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/emails', emails.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/emails', emails.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', 'emails', { outlets: { popup: emails.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,24 @@
+{
+  "connectorApp": {
+    "relaunchEmail": {
+      "home": {
+        "title": "RelaunchEmails",
+        "createLabel": "Créer un nouveau Relaunch Email",
+        "createOrEditLabel": "Créer ou éditer un Relaunch Email"
+      },
+      "created": "Un nouveau Relaunch Email a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Relaunch Email avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Relaunch Email avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Relaunch Email {{ id }} ?"
+      },
+      "detail": {
+        "title": "Relaunch Email"
+      },
+      "relaunchSubject": "Relaunch Subject",
+      "relaunchBody": "Relaunch Body",
+      "relaunchEndBody": "Relaunch End Body",
+      "relaunchSignatureLinkBody": "Relaunch Signature Link Body"
+    }
+  }
+}

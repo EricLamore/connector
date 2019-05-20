@@ -1,0 +1,16 @@
+{
+  "connectorApp": {
+    "Language": {
+      "null": "",
+      "FRENCH": "FRENCH",
+      "ENGLISH": "ENGLISH",
+      "SPANISH": "SPANISH",
+      "ITALIAN": "ITALIAN",
+      "GERMAN": "GERMAN",
+      "PORTUGUESE": "PORTUGUESE",
+      "DUTCH": "DUTCH",
+      "ROMANIAN": "ROMANIAN",
+      "POLISH": "POLISH"
+    }
+  }
+}

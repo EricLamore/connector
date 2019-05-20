@@ -1,0 +1,24 @@
+{
+  "connectorApp": {
+    "startEmail": {
+      "home": {
+        "title": "StartEmails",
+        "createLabel": "Créer un nouveau Start Email",
+        "createOrEditLabel": "Créer ou éditer un Start Email"
+      },
+      "created": "Un nouveau Start Email a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Start Email avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Start Email avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Start Email {{ id }} ?"
+      },
+      "detail": {
+        "title": "Start Email"
+      },
+      "startSubject": "Start Subject",
+      "startBody": "Start Body",
+      "endBody": "End Body",
+      "signatureLinkBody": "Signature Link Body"
+    }
+  }
+}

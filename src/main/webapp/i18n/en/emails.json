@@ -1,0 +1,25 @@
+{
+  "connectorApp": {
+    "emails": {
+      "home": {
+        "title": "Emails",
+        "createLabel": "Create a new Emails",
+        "createOrEditLabel": "Create or edit a Emails"
+      },
+      "created": "A new Emails is created with identifier {{ param }}",
+      "updated": "A Emails is updated with identifier {{ param }}",
+      "deleted": "A Emails is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Emails {{ id }}?"
+      },
+      "detail": {
+        "title": "Emails"
+      },
+      "logo": "Logo",
+      "language": "Language",
+      "startEmail": "Start Email",
+      "endEmail": "End Email",
+      "relaunchEmail": "Relaunch Email"
+    }
+  }
+}

@@ -1,0 +1,50 @@
+{
+    "name": "Emails",
+    "fields": [
+        {
+            "fieldName": "logo",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "image"
+        },
+        {
+            "fieldName": "language",
+            "fieldType": "Language",
+            "fieldValues": "FRENCH,ENGLISH,SPANISH,ITALIAN,GERMAN,PORTUGUESE,DUTCH,ROMANIAN,POLISH"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "startEmail",
+            "otherEntityRelationshipName": "emails",
+            "relationshipName": "startEmail",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "endEmail",
+            "otherEntityRelationshipName": "emails",
+            "relationshipName": "endEmail",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "relaunchEmail",
+            "otherEntityRelationshipName": "emails",
+            "relationshipName": "relaunchEmail",
+            "otherEntityField": "id",
+            "ownerSide": true
+        }
+    ],
+    "changelogDate": "20190520120630",
+    "entityTableName": "emails",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

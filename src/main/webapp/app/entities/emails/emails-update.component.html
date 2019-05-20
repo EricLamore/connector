@@ -1,0 +1,76 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-emails-heading" jhiTranslate="connectorApp.emails.home.createOrEditLabel">Create or edit a Emails</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!emails.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="connectorApp.emails.logo" for="field_logo">Logo</label>
+                    <div>
+                        <img [src]="'data:' + editForm.get('logoContentType').value + ';base64,' + editForm.get('logo').value" style="max-height: 100px;" *ngIf="editForm.get('logo').value" alt="emails image"/>
+                        <div *ngIf="editForm.get('logo').value" class="form-text text-danger clearfix">
+                            <span class="pull-left">{{editForm.get('logoContentType').value}}, {{byteSize(editForm.get('logo').value)}}</span>
+                            <button type="button" (click)="clearInputImage('logo', 'logoContentType', 'fileImage')" class="btn btn-secondary btn-xs pull-right">
+                                <fa-icon [icon]="'times'"></fa-icon>
+                            </button>
+                        </div>
+                        <input type="file" id="file_logo" (change)="setFileData($event, 'logo', true)" accept="image/*" jhiTranslate="entity.action.addimage"/>
+                    </div>
+                    <input type="hidden" class="form-control" name="logo" id="field_logo"
+                           formControlName="logo"/>
+                    <input type="hidden" class="form-control" name="logoContentType" id="field_logoContentType"
+                           formControlName="logoContentType" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="connectorApp.emails.language" for="field_language">Language</label>
+                    <select class="form-control" name="language" formControlName="language" id="field_language">
+                        <option value="FRENCH">{{'connectorApp.Language.FRENCH' | translate}}</option>
+                        <option value="ENGLISH">{{'connectorApp.Language.ENGLISH' | translate}}</option>
+                        <option value="SPANISH">{{'connectorApp.Language.SPANISH' | translate}}</option>
+                        <option value="ITALIAN">{{'connectorApp.Language.ITALIAN' | translate}}</option>
+                        <option value="GERMAN">{{'connectorApp.Language.GERMAN' | translate}}</option>
+                        <option value="PORTUGUESE">{{'connectorApp.Language.PORTUGUESE' | translate}}</option>
+                        <option value="DUTCH">{{'connectorApp.Language.DUTCH' | translate}}</option>
+                        <option value="ROMANIAN">{{'connectorApp.Language.ROMANIAN' | translate}}</option>
+                        <option value="POLISH">{{'connectorApp.Language.POLISH' | translate}}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="connectorApp.emails.startEmail" for="field_startEmail">Start Email</label>
+                    <select class="form-control" id="field_startEmail" name="startEmail" formControlName="startEmail">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="startEmailOption.id === editForm.get('startEmail').value?.id ? editForm.get('startEmail').value : startEmailOption" *ngFor="let startEmailOption of startemails; trackBy: trackStartEmailById">{{startEmailOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="connectorApp.emails.endEmail" for="field_endEmail">End Email</label>
+                    <select class="form-control" id="field_endEmail" name="endEmail" formControlName="endEmail">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="endEmailOption.id === editForm.get('endEmail').value?.id ? editForm.get('endEmail').value : endEmailOption" *ngFor="let endEmailOption of endemails; trackBy: trackEndEmailById">{{endEmailOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="connectorApp.emails.relaunchEmail" for="field_relaunchEmail">Relaunch Email</label>
+                    <select class="form-control" id="field_relaunchEmail" name="relaunchEmail" formControlName="relaunchEmail">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="relaunchEmailOption.id === editForm.get('relaunchEmail').value?.id ? editForm.get('relaunchEmail').value : relaunchEmailOption" *ngFor="let relaunchEmailOption of relaunchemails; trackBy: trackRelaunchEmailById">{{relaunchEmailOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,117 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="connectorApp.profile.home.title">Profiles</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-profile" [routerLink]="['/profile/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="connectorApp.profile.home.createLabel">
+            Create new Profile
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="profiles">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="name"><span jhiTranslate="connectorApp.profile.name">Name</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="environment"><span jhiTranslate="connectorApp.profile.environment">Environment</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="lifeTransaction"><span jhiTranslate="connectorApp.profile.lifeTransaction">Life Transaction</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="callbackUrl"><span jhiTranslate="connectorApp.profile.callbackUrl">Callback Url</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="redirectionUrl"><span jhiTranslate="connectorApp.profile.redirectionUrl">Redirection Url</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="googleAnalyticsId"><span jhiTranslate="connectorApp.profile.googleAnalyticsId">Google Analytics Id</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="logo"><span jhiTranslate="connectorApp.profile.logo">Logo</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="displayedName"><span jhiTranslate="connectorApp.profile.displayedName">Displayed Name</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="clickUrl"><span jhiTranslate="connectorApp.profile.clickUrl">Click Url</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="smsOtpLifetime"><span jhiTranslate="connectorApp.profile.smsOtpLifetime">Sms Otp Lifetime</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="logoAlign"><span jhiTranslate="connectorApp.profile.logoAlign">Logo Align</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="colorIntro"><span jhiTranslate="connectorApp.profile.colorIntro">Color Intro</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="sizeTextintro"><span jhiTranslate="connectorApp.profile.sizeTextintro">Size Textintro</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="colorBody"><span jhiTranslate="connectorApp.profile.colorBody">Color Body</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="sizeTextBody"><span jhiTranslate="connectorApp.profile.sizeTextBody">Size Text Body</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="colorButon"><span jhiTranslate="connectorApp.profile.colorButon">Color Buton</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="sizeTextButton"><span jhiTranslate="connectorApp.profile.sizeTextButton">Size Text Button</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="colorTextButton"><span jhiTranslate="connectorApp.profile.colorTextButton">Color Text Button</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="textAlign"><span jhiTranslate="connectorApp.profile.textAlign">Text Align</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="storage"><span jhiTranslate="connectorApp.profile.storage">Storage</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="storageService"><span jhiTranslate="connectorApp.profile.storageService">Storage Service</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="multiStamp"><span jhiTranslate="connectorApp.profile.multiStamp">Multi Stamp</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="merge"><span jhiTranslate="connectorApp.profile.merge">Merge</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="emails.id"><span jhiTranslate="connectorApp.profile.emails">Emails</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let profile of profiles ;trackBy: trackId">
+                <td><a [routerLink]="['/profile', profile.id, 'view' ]">{{profile.id}}</a></td>
+                <td>{{profile.name}}</td>
+                <td jhiTranslate="{{'connectorApp.Environment.' + profile.environment}}">{{profile.environment}}</td>
+                <td>{{profile.lifeTransaction}}</td>
+                <td>{{profile.callbackUrl}}</td>
+                <td>{{profile.redirectionUrl}}</td>
+                <td>{{profile.googleAnalyticsId}}</td>
+                <td>
+                    <a *ngIf="profile.logo" (click)="openFile(profile.logoContentType, profile.logo)">
+                        <img [src]="'data:' + profile.logoContentType + ';base64,' + profile.logo" style="max-height: 30px;" alt="profile image"/>
+                    </a>
+                    <span *ngIf="profile.logo">{{profile.logoContentType}}, {{byteSize(profile.logo)}}</span>
+                </td>
+                <td>{{profile.displayedName}}</td>
+                <td>{{profile.clickUrl}}</td>
+                <td>{{profile.smsOtpLifetime}}</td>
+                <td>{{profile.logoAlign}}</td>
+                <td>{{profile.colorIntro}}</td>
+                <td>{{profile.sizeTextintro}}</td>
+                <td>{{profile.colorBody}}</td>
+                <td>{{profile.sizeTextBody}}</td>
+                <td>{{profile.colorButon}}</td>
+                <td>{{profile.sizeTextButton}}</td>
+                <td>{{profile.colorTextButton}}</td>
+                <td>{{profile.textAlign}}</td>
+                <td>{{profile.storage}}</td>
+                <td>{{profile.storageService}}</td>
+                <td>{{profile.multiStamp}}</td>
+                <td>{{profile.merge}}</td>
+                <td>
+                    <div *ngIf="profile.emails">
+                        <a [routerLink]="['../emails', profile.emails?.id, 'view' ]" >{{profile.emails?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/profile', profile.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/profile', profile.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', 'profile', { outlets: { popup: profile.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="profiles && profiles.length">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,160 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-profile-heading" jhiTranslate="connectorApp.profile.home.createOrEditLabel">Create or edit a Profile</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!profile.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="connectorApp.profile.name" for="field_name">Name</label>
+                    <input type="text" class="form-control" name="name" id="field_name"
+                           formControlName="name"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="connectorApp.profile.environment" for="field_environment">Environment</label>
+                    <select class="form-control" name="environment" formControlName="environment" id="field_environment">
+                        <option value="SANDBOX">{{'connectorApp.Environment.SANDBOX' | translate}}</option>
+                        <option value="PRODUCTION">{{'connectorApp.Environment.PRODUCTION' | translate}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="connectorApp.profile.lifeTransaction" for="field_lifeTransaction">Life Transaction</label>
+                    <input type="number" class="form-control" name="lifeTransaction" id="field_lifeTransaction"
+                           formControlName="lifeTransaction"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="connectorApp.profile.callbackUrl" for="field_callbackUrl">Callback Url</label>
+                    <input type="text" class="form-control" name="callbackUrl" id="field_callbackUrl"
+                           formControlName="callbackUrl"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="connectorApp.profile.redirectionUrl" for="field_redirectionUrl">Redirection Url</label>
+                    <input type="text" class="form-control" name="redirectionUrl" id="field_redirectionUrl"
+                           formControlName="redirectionUrl"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="connectorApp.profile.googleAnalyticsId" for="field_googleAnalyticsId">Google Analytics Id</label>
+                    <input type="text" class="form-control" name="googleAnalyticsId" id="field_googleAnalyticsId"
+                           formControlName="googleAnalyticsId"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="connectorApp.profile.logo" for="field_logo">Logo</label>
+                    <div>
+                        <img [src]="'data:' + editForm.get('logoContentType').value + ';base64,' + editForm.get('logo').value" style="max-height: 100px;" *ngIf="editForm.get('logo').value" alt="profile image"/>
+                        <div *ngIf="editForm.get('logo').value" class="form-text text-danger clearfix">
+                            <span class="pull-left">{{editForm.get('logoContentType').value}}, {{byteSize(editForm.get('logo').value)}}</span>
+                            <button type="button" (click)="clearInputImage('logo', 'logoContentType', 'fileImage')" class="btn btn-secondary btn-xs pull-right">
+                                <fa-icon [icon]="'times'"></fa-icon>
+                            </button>
+                        </div>
+                        <input type="file" id="file_logo" (change)="setFileData($event, 'logo', true)" accept="image/*" jhiTranslate="entity.action.addimage"/>
+                    </div>
+                    <input type="hidden" class="form-control" name="logo" id="field_logo"
+                           formControlName="logo"/>
+                    <input type="hidden" class="form-control" name="logoContentType" id="field_logoContentType"
+                           formControlName="logoContentType" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="connectorApp.profile.displayedName" for="field_displayedName">Displayed Name</label>
+                    <input type="text" class="form-control" name="displayedName" id="field_displayedName"
+                           formControlName="displayedName"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="connectorApp.profile.clickUrl" for="field_clickUrl">Click Url</label>
+                    <input type="text" class="form-control" name="clickUrl" id="field_clickUrl"
+                           formControlName="clickUrl"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="connectorApp.profile.smsOtpLifetime" for="field_smsOtpLifetime">Sms Otp Lifetime</label>
+                    <input type="number" class="form-control" name="smsOtpLifetime" id="field_smsOtpLifetime"
+                           formControlName="smsOtpLifetime"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="connectorApp.profile.logoAlign" for="field_logoAlign">Logo Align</label>
+                    <input type="text" class="form-control" name="logoAlign" id="field_logoAlign"
+                           formControlName="logoAlign"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="connectorApp.profile.colorIntro" for="field_colorIntro">Color Intro</label>
+                    <input type="text" class="form-control" name="colorIntro" id="field_colorIntro"
+                           formControlName="colorIntro"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="connectorApp.profile.sizeTextintro" for="field_sizeTextintro">Size Textintro</label>
+                    <input type="text" class="form-control" name="sizeTextintro" id="field_sizeTextintro"
+                           formControlName="sizeTextintro"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="connectorApp.profile.colorBody" for="field_colorBody">Color Body</label>
+                    <input type="text" class="form-control" name="colorBody" id="field_colorBody"
+                           formControlName="colorBody"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="connectorApp.profile.sizeTextBody" for="field_sizeTextBody">Size Text Body</label>
+                    <input type="text" class="form-control" name="sizeTextBody" id="field_sizeTextBody"
+                           formControlName="sizeTextBody"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="connectorApp.profile.colorButon" for="field_colorButon">Color Buton</label>
+                    <input type="text" class="form-control" name="colorButon" id="field_colorButon"
+                           formControlName="colorButon"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="connectorApp.profile.sizeTextButton" for="field_sizeTextButton">Size Text Button</label>
+                    <input type="text" class="form-control" name="sizeTextButton" id="field_sizeTextButton"
+                           formControlName="sizeTextButton"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="connectorApp.profile.colorTextButton" for="field_colorTextButton">Color Text Button</label>
+                    <input type="text" class="form-control" name="colorTextButton" id="field_colorTextButton"
+                           formControlName="colorTextButton"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="connectorApp.profile.textAlign" for="field_textAlign">Text Align</label>
+                    <input type="text" class="form-control" name="textAlign" id="field_textAlign"
+                           formControlName="textAlign"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="connectorApp.profile.storage" for="field_storage">Storage</label>
+                    <input type="checkbox" class="form-control" name="storage" id="field_storage"
+                           formControlName="storage"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="connectorApp.profile.storageService" for="field_storageService">Storage Service</label>
+                    <input type="text" class="form-control" name="storageService" id="field_storageService"
+                           formControlName="storageService"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="connectorApp.profile.multiStamp" for="field_multiStamp">Multi Stamp</label>
+                    <input type="checkbox" class="form-control" name="multiStamp" id="field_multiStamp"
+                           formControlName="multiStamp"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="connectorApp.profile.merge" for="field_merge">Merge</label>
+                    <input type="checkbox" class="form-control" name="merge" id="field_merge"
+                           formControlName="merge"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="connectorApp.profile.emails" for="field_emails">Emails</label>
+                    <select class="form-control" id="field_emails" name="emails" formControlName="emails">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="emailsOption.id === editForm.get('emails').value?.id ? editForm.get('emails').value : emailsOption" *ngFor="let emailsOption of emails; trackBy: trackEmailsById">{{emailsOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

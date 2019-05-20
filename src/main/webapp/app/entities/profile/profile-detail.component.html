@@ -1,0 +1,126 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="profile">
+            <h2><span jhiTranslate="connectorApp.profile.detail.title">Profile</span> {{profile.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="connectorApp.profile.name">Name</span></dt>
+                <dd>
+                    <span>{{profile.name}}</span>
+                </dd>
+                <dt><span jhiTranslate="connectorApp.profile.environment">Environment</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'connectorApp.Environment.' + profile.environment}}">{{profile.environment}}</span>
+                </dd>
+                <dt><span jhiTranslate="connectorApp.profile.lifeTransaction">Life Transaction</span></dt>
+                <dd>
+                    <span>{{profile.lifeTransaction}}</span>
+                </dd>
+                <dt><span jhiTranslate="connectorApp.profile.callbackUrl">Callback Url</span></dt>
+                <dd>
+                    <span>{{profile.callbackUrl}}</span>
+                </dd>
+                <dt><span jhiTranslate="connectorApp.profile.redirectionUrl">Redirection Url</span></dt>
+                <dd>
+                    <span>{{profile.redirectionUrl}}</span>
+                </dd>
+                <dt><span jhiTranslate="connectorApp.profile.googleAnalyticsId">Google Analytics Id</span></dt>
+                <dd>
+                    <span>{{profile.googleAnalyticsId}}</span>
+                </dd>
+                <dt><span jhiTranslate="connectorApp.profile.logo">Logo</span></dt>
+                <dd>
+                    <div *ngIf="profile.logo">
+                        <a (click)="openFile(profile.logoContentType, profile.logo)">
+                            <img [src]="'data:' + profile.logoContentType + ';base64,' + profile.logo" style="max-width: 100%;" alt="profile image"/>
+                        </a>
+                        {{profile.logoContentType}}, {{byteSize(profile.logo)}}
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="connectorApp.profile.displayedName">Displayed Name</span></dt>
+                <dd>
+                    <span>{{profile.displayedName}}</span>
+                </dd>
+                <dt><span jhiTranslate="connectorApp.profile.clickUrl">Click Url</span></dt>
+                <dd>
+                    <span>{{profile.clickUrl}}</span>
+                </dd>
+                <dt><span jhiTranslate="connectorApp.profile.smsOtpLifetime">Sms Otp Lifetime</span></dt>
+                <dd>
+                    <span>{{profile.smsOtpLifetime}}</span>
+                </dd>
+                <dt><span jhiTranslate="connectorApp.profile.logoAlign">Logo Align</span></dt>
+                <dd>
+                    <span>{{profile.logoAlign}}</span>
+                </dd>
+                <dt><span jhiTranslate="connectorApp.profile.colorIntro">Color Intro</span></dt>
+                <dd>
+                    <span>{{profile.colorIntro}}</span>
+                </dd>
+                <dt><span jhiTranslate="connectorApp.profile.sizeTextintro">Size Textintro</span></dt>
+                <dd>
+                    <span>{{profile.sizeTextintro}}</span>
+                </dd>
+                <dt><span jhiTranslate="connectorApp.profile.colorBody">Color Body</span></dt>
+                <dd>
+                    <span>{{profile.colorBody}}</span>
+                </dd>
+                <dt><span jhiTranslate="connectorApp.profile.sizeTextBody">Size Text Body</span></dt>
+                <dd>
+                    <span>{{profile.sizeTextBody}}</span>
+                </dd>
+                <dt><span jhiTranslate="connectorApp.profile.colorButon">Color Buton</span></dt>
+                <dd>
+                    <span>{{profile.colorButon}}</span>
+                </dd>
+                <dt><span jhiTranslate="connectorApp.profile.sizeTextButton">Size Text Button</span></dt>
+                <dd>
+                    <span>{{profile.sizeTextButton}}</span>
+                </dd>
+                <dt><span jhiTranslate="connectorApp.profile.colorTextButton">Color Text Button</span></dt>
+                <dd>
+                    <span>{{profile.colorTextButton}}</span>
+                </dd>
+                <dt><span jhiTranslate="connectorApp.profile.textAlign">Text Align</span></dt>
+                <dd>
+                    <span>{{profile.textAlign}}</span>
+                </dd>
+                <dt><span jhiTranslate="connectorApp.profile.storage">Storage</span></dt>
+                <dd>
+                    <span>{{profile.storage}}</span>
+                </dd>
+                <dt><span jhiTranslate="connectorApp.profile.storageService">Storage Service</span></dt>
+                <dd>
+                    <span>{{profile.storageService}}</span>
+                </dd>
+                <dt><span jhiTranslate="connectorApp.profile.multiStamp">Multi Stamp</span></dt>
+                <dd>
+                    <span>{{profile.multiStamp}}</span>
+                </dd>
+                <dt><span jhiTranslate="connectorApp.profile.merge">Merge</span></dt>
+                <dd>
+                    <span>{{profile.merge}}</span>
+                </dd>
+                <dt><span jhiTranslate="connectorApp.profile.emails">Emails</span></dt>
+                <dd>
+                    <div *ngIf="profile.emails">
+                        <a [routerLink]="['/emails', profile.emails?.id, 'view']">{{profile.emails?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/profile', profile.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,37 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="sMS">
+            <h2><span jhiTranslate="connectorApp.sMS.detail.title">SMS</span> {{sMS.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="connectorApp.sMS.smsAuthText">Sms Auth Text</span></dt>
+                <dd>
+                    <span>{{sMS.smsAuthText}}</span>
+                </dd>
+                <dt><span jhiTranslate="connectorApp.sMS.language">Language</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'connectorApp.Language.' + sMS.language}}">{{sMS.language}}</span>
+                </dd>
+                <dt><span jhiTranslate="connectorApp.sMS.profile">Profile</span></dt>
+                <dd>
+                    <div *ngIf="sMS.profile">
+                        <a [routerLink]="['/profile', sMS.profile?.id, 'view']">{{sMS.profile?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/sms', sMS.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

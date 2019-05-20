@@ -1,0 +1,97 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-event-heading" jhiTranslate="connectorApp.event.home.createOrEditLabel">Create or edit a Event</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!event.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="connectorApp.event.parentId" for="field_parentId">Parent Id</label>
+                    <input type="text" class="form-control" name="parentId" id="field_parentId"
+                           formControlName="parentId"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="connectorApp.event.masterEvent" for="field_masterEvent">Master Event</label>
+                    <input type="checkbox" class="form-control" name="masterEvent" id="field_masterEvent"
+                           formControlName="masterEvent"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="connectorApp.event.type" for="field_type">Type</label>
+                    <select class="form-control" name="type" formControlName="type" id="field_type">
+                        <option value="SYNCHRONIZATION">{{'connectorApp.EventType.SYNCHRONIZATION' | translate}}</option>
+                        <option value="ADD_ACCOUNT">{{'connectorApp.EventType.ADD_ACCOUNT' | translate}}</option>
+                        <option value="UPDATE_ACCOUNT">{{'connectorApp.EventType.UPDATE_ACCOUNT' | translate}}</option>
+                        <option value="DELETE_ACCOUNT">{{'connectorApp.EventType.DELETE_ACCOUNT' | translate}}</option>
+                        <option value="TASK_END">{{'connectorApp.EventType.TASK_END' | translate}}</option>
+                        <option value="CREATE_CONNECTOR">{{'connectorApp.EventType.CREATE_CONNECTOR' | translate}}</option>
+                        <option value="ERROR">{{'connectorApp.EventType.ERROR' | translate}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="connectorApp.event.from" for="field_from">From</label>
+                    <select class="form-control" name="from" formControlName="from" id="field_from">
+                        <option value="PPM">{{'connectorApp.ConnectorType.PPM' | translate}}</option>
+                        <option value="CRM">{{'connectorApp.ConnectorType.CRM' | translate}}</option>
+                        <option value="BILLING">{{'connectorApp.ConnectorType.BILLING' | translate}}</option>
+                        <option value="TICKETING">{{'connectorApp.ConnectorType.TICKETING' | translate}}</option>
+                        <option value="MRR_REPORT">{{'connectorApp.ConnectorType.MRR_REPORT' | translate}}</option>
+                        <option value="UNIVERSIGN">{{'connectorApp.ConnectorType.UNIVERSIGN' | translate}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="connectorApp.event.to" for="field_to">To</label>
+                    <select class="form-control" name="to" formControlName="to" id="field_to">
+                        <option value="PPM">{{'connectorApp.ConnectorType.PPM' | translate}}</option>
+                        <option value="CRM">{{'connectorApp.ConnectorType.CRM' | translate}}</option>
+                        <option value="BILLING">{{'connectorApp.ConnectorType.BILLING' | translate}}</option>
+                        <option value="TICKETING">{{'connectorApp.ConnectorType.TICKETING' | translate}}</option>
+                        <option value="MRR_REPORT">{{'connectorApp.ConnectorType.MRR_REPORT' | translate}}</option>
+                        <option value="UNIVERSIGN">{{'connectorApp.ConnectorType.UNIVERSIGN' | translate}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="connectorApp.event.exception" for="field_exception">Exception</label>
+                    <input type="text" class="form-control" name="exception" id="field_exception"
+                           formControlName="exception"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="connectorApp.event.message" for="field_message">Message</label>
+                    <input type="text" class="form-control" name="message" id="field_message"
+                           formControlName="message"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="connectorApp.event.creationDate" for="field_creationDate">Creation Date</label>
+                    <div class="input-group">
+                        <input id="field_creationDate" type="text" class="form-control" name="creationDate" ngbDatepicker  #creationDateDp="ngbDatepicker" formControlName="creationDate"/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="creationDateDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="connectorApp.event.childSize" for="field_childSize">Child Size</label>
+                    <input type="number" class="form-control" name="childSize" id="field_childSize"
+                           formControlName="childSize"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="connectorApp.event.parameter" for="field_parameter">Parameter</label>
+                    <input type="text" class="form-control" name="parameter" id="field_parameter"
+                           formControlName="parameter"/>
+                </div>
+
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

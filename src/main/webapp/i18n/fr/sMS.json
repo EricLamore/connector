@@ -1,0 +1,23 @@
+{
+  "connectorApp": {
+    "sMS": {
+      "home": {
+        "title": "SMS",
+        "createLabel": "Créer un nouveau SMS",
+        "createOrEditLabel": "Créer ou éditer un SMS"
+      },
+      "created": "Un nouveau SMS a été créé avec l'identifiant {{ param }}",
+      "updated": "Le SMS avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le SMS avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le SMS {{ id }} ?"
+      },
+      "detail": {
+        "title": "SMS"
+      },
+      "smsAuthText": "Sms Auth Text",
+      "language": "Language",
+      "profile": "Profile"
+    }
+  }
+}

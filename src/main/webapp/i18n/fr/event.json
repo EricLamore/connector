@@ -1,0 +1,30 @@
+{
+  "connectorApp": {
+    "event": {
+      "home": {
+        "title": "Events",
+        "createLabel": "Créer un nouveau Event",
+        "createOrEditLabel": "Créer ou éditer un Event"
+      },
+      "created": "Un nouveau Event a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Event avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Event avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Event {{ id }} ?"
+      },
+      "detail": {
+        "title": "Event"
+      },
+      "parentId": "Parent Id",
+      "masterEvent": "Master Event",
+      "type": "Type",
+      "from": "From",
+      "to": "To",
+      "exception": "Exception",
+      "message": "Message",
+      "creationDate": "Creation Date",
+      "childSize": "Child Size",
+      "parameter": "Parameter"
+    }
+  }
+}

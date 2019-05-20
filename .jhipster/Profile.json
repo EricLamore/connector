@@ -1,0 +1,124 @@
+{
+    "name": "Profile",
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "environment",
+            "fieldType": "Environment",
+            "fieldValues": "SANDBOX,PRODUCTION"
+        },
+        {
+            "fieldName": "lifeTransaction",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "callbackUrl",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "redirectionUrl",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "googleAnalyticsId",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "logo",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "image"
+        },
+        {
+            "fieldName": "displayedName",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "clickUrl",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "smsOtpLifetime",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "logoAlign",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "colorIntro",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "sizeTextintro",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "colorBody",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "sizeTextBody",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "colorButon",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "sizeTextButton",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "colorTextButton",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "textAlign",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "storage",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "storageService",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "multiStamp",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "merge",
+            "fieldType": "Boolean"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "emails",
+            "otherEntityRelationshipName": "profile",
+            "relationshipName": "emails",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "sMS",
+            "otherEntityRelationshipName": "profile",
+            "relationshipName": "sms"
+        }
+    ],
+    "changelogDate": "20190520120634",
+    "entityTableName": "profile",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

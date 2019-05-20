@@ -1,0 +1,44 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-start-email-heading" jhiTranslate="connectorApp.startEmail.home.createOrEditLabel">Create or edit a Start Email</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!startEmail.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="connectorApp.startEmail.startSubject" for="field_startSubject">Start Subject</label>
+                    <input type="text" class="form-control" name="startSubject" id="field_startSubject"
+                           formControlName="startSubject"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="connectorApp.startEmail.startBody" for="field_startBody">Start Body</label>
+                    <input type="text" class="form-control" name="startBody" id="field_startBody"
+                           formControlName="startBody"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="connectorApp.startEmail.endBody" for="field_endBody">End Body</label>
+                    <input type="text" class="form-control" name="endBody" id="field_endBody"
+                           formControlName="endBody"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="connectorApp.startEmail.signatureLinkBody" for="field_signatureLinkBody">Signature Link Body</label>
+                    <input type="text" class="form-control" name="signatureLinkBody" id="field_signatureLinkBody"
+                           formControlName="signatureLinkBody"/>
+                </div>
+
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

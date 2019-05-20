@@ -1,0 +1,31 @@
+{
+    "name": "RelaunchEmail",
+    "fields": [
+        {
+            "fieldName": "relaunchSubject",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "relaunchBody",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "relaunchEndBody",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "relaunchSignatureLinkBody",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20190520120632",
+    "entityTableName": "relaunch_email",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

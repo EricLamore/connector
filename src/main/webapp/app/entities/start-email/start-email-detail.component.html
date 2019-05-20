@@ -1,0 +1,39 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="startEmail">
+            <h2><span jhiTranslate="connectorApp.startEmail.detail.title">Start Email</span> {{startEmail.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="connectorApp.startEmail.startSubject">Start Subject</span></dt>
+                <dd>
+                    <span>{{startEmail.startSubject}}</span>
+                </dd>
+                <dt><span jhiTranslate="connectorApp.startEmail.startBody">Start Body</span></dt>
+                <dd>
+                    <span>{{startEmail.startBody}}</span>
+                </dd>
+                <dt><span jhiTranslate="connectorApp.startEmail.endBody">End Body</span></dt>
+                <dd>
+                    <span>{{startEmail.endBody}}</span>
+                </dd>
+                <dt><span jhiTranslate="connectorApp.startEmail.signatureLinkBody">Signature Link Body</span></dt>
+                <dd>
+                    <span>{{startEmail.signatureLinkBody}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/start-email', startEmail.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

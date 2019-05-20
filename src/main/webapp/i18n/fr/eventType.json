@@ -1,0 +1,14 @@
+{
+  "connectorApp": {
+    "EventType": {
+      "null": "",
+      "SYNCHRONIZATION": "SYNCHRONIZATION",
+      "ADD_ACCOUNT": "ADD_ACCOUNT",
+      "UPDATE_ACCOUNT": "UPDATE_ACCOUNT",
+      "DELETE_ACCOUNT": "DELETE_ACCOUNT",
+      "TASK_END": "TASK_END",
+      "CREATE_CONNECTOR": "CREATE_CONNECTOR",
+      "ERROR": "ERROR"
+    }
+  }
+}

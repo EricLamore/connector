@@ -1,0 +1,31 @@
+{
+    "name": "StartEmail",
+    "fields": [
+        {
+            "fieldName": "startSubject",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "startBody",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "endBody",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "signatureLinkBody",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20190520120631",
+    "entityTableName": "start_email",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

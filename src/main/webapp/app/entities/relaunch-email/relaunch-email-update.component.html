@@ -1,0 +1,44 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-relaunch-email-heading" jhiTranslate="connectorApp.relaunchEmail.home.createOrEditLabel">Create or edit a Relaunch Email</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!relaunchEmail.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="connectorApp.relaunchEmail.relaunchSubject" for="field_relaunchSubject">Relaunch Subject</label>
+                    <input type="text" class="form-control" name="relaunchSubject" id="field_relaunchSubject"
+                           formControlName="relaunchSubject"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="connectorApp.relaunchEmail.relaunchBody" for="field_relaunchBody">Relaunch Body</label>
+                    <input type="text" class="form-control" name="relaunchBody" id="field_relaunchBody"
+                           formControlName="relaunchBody"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="connectorApp.relaunchEmail.relaunchEndBody" for="field_relaunchEndBody">Relaunch End Body</label>
+                    <input type="text" class="form-control" name="relaunchEndBody" id="field_relaunchEndBody"
+                           formControlName="relaunchEndBody"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="connectorApp.relaunchEmail.relaunchSignatureLinkBody" for="field_relaunchSignatureLinkBody">Relaunch Signature Link Body</label>
+                    <input type="text" class="form-control" name="relaunchSignatureLinkBody" id="field_relaunchSignatureLinkBody"
+                           formControlName="relaunchSignatureLinkBody"/>
+                </div>
+
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,13 @@
+{
+  "connectorApp": {
+    "ConnectorType": {
+      "null": "",
+      "PPM": "PPM",
+      "CRM": "CRM",
+      "BILLING": "BILLING",
+      "TICKETING": "TICKETING",
+      "MRR_REPORT": "MRR_REPORT",
+      "UNIVERSIGN": "UNIVERSIGN"
+    }
+  }
+}

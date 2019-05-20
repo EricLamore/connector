@@ -1,0 +1,45 @@
+{
+  "connectorApp": {
+    "profile": {
+      "home": {
+        "title": "Profiles",
+        "createLabel": "Créer un nouveau Profile",
+        "createOrEditLabel": "Créer ou éditer un Profile"
+      },
+      "created": "Un nouveau Profile a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Profile avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Profile avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Profile {{ id }} ?"
+      },
+      "detail": {
+        "title": "Profile"
+      },
+      "name": "Name",
+      "environment": "Environment",
+      "lifeTransaction": "Life Transaction",
+      "callbackUrl": "Callback Url",
+      "redirectionUrl": "Redirection Url",
+      "googleAnalyticsId": "Google Analytics Id",
+      "logo": "Logo",
+      "displayedName": "Displayed Name",
+      "clickUrl": "Click Url",
+      "smsOtpLifetime": "Sms Otp Lifetime",
+      "logoAlign": "Logo Align",
+      "colorIntro": "Color Intro",
+      "sizeTextintro": "Size Textintro",
+      "colorBody": "Color Body",
+      "sizeTextBody": "Size Text Body",
+      "colorButon": "Color Buton",
+      "sizeTextButton": "Size Text Button",
+      "colorTextButton": "Color Text Button",
+      "textAlign": "Text Align",
+      "storage": "Storage",
+      "storageService": "Storage Service",
+      "multiStamp": "Multi Stamp",
+      "merge": "Merge",
+      "emails": "Emails",
+      "sms": "Sms"
+    }
+  }
+}

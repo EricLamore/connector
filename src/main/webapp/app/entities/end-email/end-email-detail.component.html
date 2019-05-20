@@ -1,0 +1,31 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="endEmail">
+            <h2><span jhiTranslate="connectorApp.endEmail.detail.title">End Email</span> {{endEmail.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="connectorApp.endEmail.endSubject">End Subject</span></dt>
+                <dd>
+                    <span>{{endEmail.endSubject}}</span>
+                </dd>
+                <dt><span jhiTranslate="connectorApp.endEmail.endBody">End Body</span></dt>
+                <dd>
+                    <span>{{endEmail.endBody}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/end-email', endEmail.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

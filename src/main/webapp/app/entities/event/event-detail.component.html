@@ -1,0 +1,63 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="event">
+            <h2><span jhiTranslate="connectorApp.event.detail.title">Event</span> {{event.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="connectorApp.event.parentId">Parent Id</span></dt>
+                <dd>
+                    <span>{{event.parentId}}</span>
+                </dd>
+                <dt><span jhiTranslate="connectorApp.event.masterEvent">Master Event</span></dt>
+                <dd>
+                    <span>{{event.masterEvent}}</span>
+                </dd>
+                <dt><span jhiTranslate="connectorApp.event.type">Type</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'connectorApp.EventType.' + event.type}}">{{event.type}}</span>
+                </dd>
+                <dt><span jhiTranslate="connectorApp.event.from">From</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'connectorApp.ConnectorType.' + event.from}}">{{event.from}}</span>
+                </dd>
+                <dt><span jhiTranslate="connectorApp.event.to">To</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'connectorApp.ConnectorType.' + event.to}}">{{event.to}}</span>
+                </dd>
+                <dt><span jhiTranslate="connectorApp.event.exception">Exception</span></dt>
+                <dd>
+                    <span>{{event.exception}}</span>
+                </dd>
+                <dt><span jhiTranslate="connectorApp.event.message">Message</span></dt>
+                <dd>
+                    <span>{{event.message}}</span>
+                </dd>
+                <dt><span jhiTranslate="connectorApp.event.creationDate">Creation Date</span></dt>
+                <dd>
+                    <span>{{event.creationDate}}</span>
+                </dd>
+                <dt><span jhiTranslate="connectorApp.event.childSize">Child Size</span></dt>
+                <dd>
+                    <span>{{event.childSize}}</span>
+                </dd>
+                <dt><span jhiTranslate="connectorApp.event.parameter">Parameter</span></dt>
+                <dd>
+                    <span>{{event.parameter}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/event', event.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

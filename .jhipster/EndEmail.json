@@ -1,0 +1,23 @@
+{
+    "name": "EndEmail",
+    "fields": [
+        {
+            "fieldName": "endSubject",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "endBody",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20190520120633",
+    "entityTableName": "end_email",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}
