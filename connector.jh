@@ -1,0 +1,125 @@
+entity Event {
+	parentId String,
+    masterEvent Boolean,
+    type EventType,
+    from ConnectorType,
+    to ConnectorType,
+    exception String,
+    message String,
+    creationDate LocalDate,
+    childSize Integer,
+    parameter String,
+}
+
+enum EventType {
+	SYNCHRONIZATION,
+    ADD_ACCOUNT,
+    UPDATE_ACCOUNT,
+    DELETE_ACCOUNT,
+    TASK_END,
+    CREATE_CONNECTOR,
+    ERROR
+}
+
+enum ConnectorType {
+    PPM,
+    CRM,
+    BILLING,
+    TICKETING,
+    MRR_REPORT,
+    UNIVERSIGN
+}
+
+entity SMS {
+	smsAuthText String,
+    language Language
+}
+
+entity Emails {
+	logo ImageBlob,
+    language Language
+}
+
+entity StartEmail {
+	startSubject String,
+    startBody String,
+    endBody String,
+    signatureLinkBody String
+}
+
+entity RelaunchEmail {
+	relaunchSubject String,
+    relaunchBody String,
+    relaunchEndBody String,
+    relaunchSignatureLinkBody String
+}
+
+entity EndEmail {
+	endSubject String,
+    endBody String
+}
+
+entity Profile {
+	name String,
+	id String,
+    environment Environment,
+    lifeTransaction Integer,
+	callbackUrl String,
+	redirectionUrl String,
+	googleAnalyticsId String,
+    logo ImageBlob,
+	displayedName String,
+	clickUrl String,
+    smsOtpLifetime Integer,
+    logoAlign String,
+    colorIntro String,
+    sizeTextintro String,
+    colorBody String,
+    sizeTextBody String,
+    colorButon String,
+    sizeTextButton String,
+    colorTextButton String,
+    textAlign String,
+    storage Boolean,
+    storageService String,
+    multiStamp Boolean,
+    merge Boolean
+}
+
+enum Language {
+    FRENCH, ENGLISH, SPANISH, ITALIAN, GERMAN, PORTUGUESE, DUTCH, ROMANIAN, POLISH 
+}
+
+enum Environment {
+	SANDBOX, PRODUCTION
+}
+
+// defining multiple oneToOne relationships
+relationship OneToOne {
+    Profile{emails} to Emails,
+}
+
+relationship OneToMany{
+	Profile{sms} to SMS,
+}
+
+relationship OneToOne {
+	Emails{startEmail} to StartEmail,
+    Emails{endEmail} to EndEmail,
+    Emails{relaunchEmail} to RelaunchEmail
+	
+}
+// Set pagination options
+paginate Profile with infinite-scroll
+paginate Profile with pagination
+
+// Use Data Transfert Objects (DTO)
+// dto * with mapstruct
+
+
+// Set service options to all except few
+/**
+service all with serviceImpl
+*/
+// Set an angular suffix
+// angularSuffix * with mySuffix
